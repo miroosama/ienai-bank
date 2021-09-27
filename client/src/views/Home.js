@@ -1,24 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 
-import Input from '../components/Input';
+import Deposit from '../components/Deposit';
 import Button from '../components/Button';
 
 export default function Home({ context }) {
-  const [value, setValue] = useState();
   const { web3, bankInstance, account } = context;
-
-  const deposit = async () => {
-    try {
-      await bankInstance.methods.deposit().send({
-        value: web3.utils.toWei(value, 'ether'),
-        from: account
-      });
-      setValue(null);
-    } catch(e) {
-      console.log('error', e);
-    }
-  };
 
   const withdraw = async (e) => {
     e.preventDefault();
@@ -35,13 +22,7 @@ export default function Home({ context }) {
     <div>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <div>
-            Enter eth amount you would like to deposit and hit deposit
-          </div>
-          <Input value={value} callback={(e) => setValue(e.target.value)} />
-          <div>
-            <Button label="Deposit" callback={deposit} />
-          </div>
+          <Deposit web3={web3} bankInstance={bankInstance} account={account} />
         </Grid>
         <Grid item xs={6}>
           <div>

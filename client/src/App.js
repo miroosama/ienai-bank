@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
 
 import IenaiBankContract from './contracts/IenaiBank.json';
 import TokenContract from './contracts/Token.json';
@@ -46,7 +48,12 @@ export default function App() {
 
   return (
     <div className="App">
-      {context ? context.account : 'hello'}
+      <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+        <Typography sx={{ justifyContent: 'space-between' }}>
+          ienai Bank
+          Account: { context && context.account }
+        </Typography>
+      </AppBar>
       { context && <Home context={context} /> }
     </div>
   );
