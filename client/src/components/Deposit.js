@@ -29,6 +29,7 @@ export default function Input({ web3, bankInstance, account }) {
           onChange={(e) => setValue(e.target.value)}
           placeholder="0"
           value={value}
+          className="TextField"
           id="standard-number"
           label="Amount"
           type="number"

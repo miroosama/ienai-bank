@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+import { theme } from './styles/MuiTheme';
 import IenaiBankContract from './contracts/IenaiBank.json';
 import TokenContract from './contracts/Token.json';
 import Home from './views/Home';
@@ -48,13 +52,21 @@ export default function App() {
 
   return (
     <div className="App">
-      <AppBar position="static" sx={{ backgroundColor: 'black' }}>
-        <Typography sx={{ justifyContent: 'space-between' }}>
-          ienai Bank
-          Account: { context && context.account }
-        </Typography>
-      </AppBar>
-      { context && <Home context={context} /> }
+      <ThemeProvider theme={theme}>
+        <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+          <Toolbar sx={{ justifyContent: 'space-between' }}>
+            <Typography variant="h6">
+              ienai Bank
+            </Typography>
+            <Typography>
+              Account: { context && context.account }
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div>
+        { context && <Home context={context} /> }
+        </div>
+      </ThemeProvider>
     </div>
   );
 }
