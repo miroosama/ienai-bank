@@ -3,8 +3,7 @@ import Web3 from 'web3';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 import { theme } from './styles/MuiTheme';
 import IenaiBankContract from './contracts/IenaiBank.json';
@@ -53,7 +52,12 @@ export default function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+        <AppBar 
+          position="static" 
+          sx={{ 
+            backgroundColor: 'black', 
+            borderBottom: ' 1px solid rgba(255, 255, 255, 0.09)' 
+          }}>
           <Toolbar sx={{ justifyContent: 'space-between' }}>
             <Typography variant="h6">
               ienai Bank

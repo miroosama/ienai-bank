@@ -20,7 +20,7 @@ export default function Input({ web3, bankInstance, account }) {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container rowSpacing={4}>
       <Grid item xs={12}>
         Enter eth amount you would like to deposit and hit deposit
       </Grid>
